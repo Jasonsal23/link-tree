@@ -15,17 +15,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Jason Salazar — Links",
+  title: "Jason Salazar",
   description: "Developer, AI builder, and educator based in Las Vegas.",
   openGraph: {
-    title: "Jason Salazar — Links",
+    title: "Jason Salazar",
     description: "Developer, AI builder, and educator based in Las Vegas.",
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary",
-    title: "Jason Salazar — Links",
-    creator: "@zerotoagent",
+    title: "Jason Salazar",
+    creator: "@jasonnsalazarr",
   },
 };
 
