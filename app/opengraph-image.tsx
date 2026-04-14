@@ -38,12 +38,10 @@ export default function Image() {
               display: "flex",
               width: "220px",
               height: "220px",
-              borderRadius: "50%",
+              borderRadius: "24px",
               backgroundImage: `url(${base64})`,
               backgroundSize: "cover",
               backgroundPosition: "center 15%",
-              border: "3px solid rgba(59,130,246,0.5)",
-              boxShadow: "0 0 40px rgba(59,130,246,0.3)",
               flexShrink: 0,
             }}
           />
