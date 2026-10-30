@@ -22,12 +22,13 @@ export const links = [
   },
 
   // ── Content Creation ──
-  {
-    section: "Content Creation",
-    label: "YouTube",
-    url: "https://youtube.com/@jasonsalazar5028",
-    favicon: "https://www.google.com/s2/favicons?domain=youtube.com&sz=64",
-  },
+  // Hidden for now — uncomment to bring back
+  // {
+  //   section: "Content Creation",
+  //   label: "YouTube",
+  //   url: "https://youtube.com/@jasonsalazar5028",
+  //   favicon: "https://www.google.com/s2/favicons?domain=youtube.com&sz=64",
+  // },
   {
     section: "Content Creation",
     label: "Tiktok",
@@ -42,18 +43,26 @@ export const links = [
   },
 
   // ── Affiliate Links ──
-  {
-    section: "Affiliate Links",
-    label: "Amazon Finds",
-    url: "/affiliate",
-    favicon: "https://www.google.com/s2/favicons?domain=amazon.com&sz=64",
-  },
+  // Hidden for now — uncomment to bring back
+  // {
+  //   section: "Affiliate Links",
+  //   label: "Amazon Finds",
+  //   url: "/affiliate",
+  //   favicon: "https://www.google.com/s2/favicons?domain=amazon.com&sz=64",
+  // },
   {
     section: "Affiliate Links",
     label: "Use code JASON20 for 20% off",
     sub: "Nimodo.co",
-    url: "https://nimodo.co",
+    url: "https://nimodo.co/?sca_ref=10956861.4sADuYtthE",
     favicon: "https://www.google.com/s2/favicons?domain=nimodo.co&sz=64",
+  },
+  {
+    section: "Affiliate Links",
+    label: "1st Phorm",
+    url: "https://1stphorm.com/?a_aid=4dv7sj20sjmkd",
+    favicon: "https://www.google.com/s2/favicons?domain=1stphorm.com&sz=64",
+    invertFavicon: true, // logo is black — flip to white on the dark button
   },
   {
     section: "Affiliate Links",
@@ -63,15 +72,16 @@ export const links = [
   },
   {
     section: "Affiliate Links",
-    label: "Earn 125k bonus points with Sapphire Reserve or 75K with Sapphire Preferred",
-    url: "https://www.referyourchasecard.com/19v/3L5FDVQP3H",
+    label: "Earn 100,000 bonus points with Sapphire Reserve® or 75,000 bonus points with Sapphire Preferred®",
+    sub: "I can be rewarded if you apply here and are approved for either card.",
+    url: "https://www.referyourchasecard.com/19y/J3KD93ED4A",
     favicon: "https://www.google.com/s2/favicons?domain=chase.com&sz=64",
   },
 ];
 
 export const socials = [
   { name: "X", url: "https://x.com/jasonnsalazarr" },
-  { name: "YouTube", url: "https://youtube.com/@jasonsalazar5028" },
+  // { name: "YouTube", url: "https://youtube.com/@jasonsalazar5028" }, // hidden for now
   { name: "GitHub", url: "https://github.com/Jasonsal23" },
   { name: "TikTok", url: "https://tiktok.com/@jasonn.salazarr" },
   { name: "Instagram", url: "https://instagram.com/jason.salazar23" },

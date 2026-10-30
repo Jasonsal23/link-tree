@@ -64,12 +64,14 @@ function LinkButton({
   favicon,
   label,
   sub,
+  invertFavicon,
   delay,
 }: {
   href: string;
   favicon: string;
   label: string;
   sub?: string;
+  invertFavicon?: boolean;
   delay: number;
 }) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -167,7 +169,7 @@ function LinkButton({
           alt=""
           width={24}
           height={24}
-          className="w-6 h-6 rounded-sm object-contain flex-shrink-0 relative z-10"
+          className={`w-6 h-6 rounded-sm object-contain flex-shrink-0 relative z-10${invertFavicon ? " invert" : ""}`}
         />
         <div className="flex flex-col relative z-10">
           <span className="text-[15px] font-semibold tracking-wide text-[#f0f0f0] drop-shadow-sm">
@@ -305,6 +307,7 @@ export default function Page() {
                   favicon={link.favicon}
                   label={link.label}
                   sub={link.sub}
+                  invertFavicon={link.invertFavicon}
                   delay={0.5 + i * 0.1}
                 />
               </div>
