@@ -59,7 +59,8 @@ export const links = [
   },
   {
     section: "Affiliate Links",
-    label: "1st Phorm",
+    label: "Shop 1st Phorm Supplements",
+    sub: "Protein, pre-workout, energy drinks & more",
     url: "https://1stphorm.com/?a_aid=4dv7sj20sjmkd",
     favicon: "https://www.google.com/s2/favicons?domain=1stphorm.com&sz=64",
     invertFavicon: true, // logo is black — flip to white on the dark button
