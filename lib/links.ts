@@ -1,6 +1,5 @@
 // Big card pinned above all the other links. Set to null to hide it.
-// To use a real photo instead of the built-in FSD illustration, drop it at
-// public/images/fsd.jpg and uncomment the `image` line below.
+// `image` is the photo shown on the card; remove it to fall back to the built-in drawing.
 export const featured: {
   label: string;
   sub?: string;
@@ -12,7 +11,7 @@ export const featured: {
   sub: "Tesla referral",
   url: "https://www.tesla.com/get-app/referral?code=jason230445",
   favicon: "https://www.google.com/s2/favicons?domain=tesla.com&sz=64",
-  // image: "/images/fsd.jpg",
+  image: "/images/fsd.png",
 };
 
 export const links = [

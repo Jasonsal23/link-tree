@@ -248,7 +248,7 @@ function FeaturedCard({ featured }: { featured: NonNullable<typeof featuredLink>
           boxShadow: "0 0 24px rgba(59,130,246,0.15), 0 8px 32px rgba(0,0,0,0.3)",
         }}
       >
-        <div className="relative w-full aspect-[20/9] overflow-hidden">
+        <div className={`relative w-full overflow-hidden ${imgError ? "aspect-[20/9]" : "aspect-[37/23]"}`}>
           {imgError ? (
             <FsdIllustration />
           ) : (
