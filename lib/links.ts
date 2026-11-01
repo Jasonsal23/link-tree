@@ -1,3 +1,20 @@
+// Big card pinned above all the other links. Set to null to hide it.
+// To use a real photo instead of the built-in FSD illustration, drop it at
+// public/images/fsd.jpg and uncomment the `image` line below.
+export const featured: {
+  label: string;
+  sub?: string;
+  url: string;
+  favicon: string;
+  image?: string;
+} | null = {
+  label: "Get 1 free month of Full Self-Driving (Supervised)",
+  sub: "Tesla referral",
+  url: "https://www.tesla.com/get-app/referral?code=jason230445",
+  favicon: "https://www.google.com/s2/favicons?domain=tesla.com&sz=64",
+  // image: "/images/fsd.jpg",
+};
+
 export const links = [
   // ── Developer ──
   {
@@ -64,12 +81,6 @@ export const links = [
     url: "https://1stphorm.com/?a_aid=4dv7sj20sjmkd",
     favicon: "https://www.google.com/s2/favicons?domain=1stphorm.com&sz=64",
     invertFavicon: true, // logo is black — flip to white on the dark button
-  },
-  {
-    section: "Affiliate Links",
-    label: "Get 3 months of Full Self Driving(Supervised)",
-    url: "https://ts.la/jason230445",
-    favicon: "https://www.google.com/s2/favicons?domain=tesla.com&sz=64",
   },
   {
     section: "Affiliate Links",

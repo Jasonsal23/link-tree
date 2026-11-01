@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { links, socials, profile } from "@/lib/links";
+import { links, socials, profile, featured as featuredLink } from "@/lib/links";
 import { useState, useRef, useCallback } from "react";
 import type { MouseEvent } from "react";
 
@@ -186,6 +186,102 @@ function LinkButton({
   );
 }
 
+/* ─── Featured card (pinned above the link stack) ───────────────────────── */
+
+// FSD-style visualization: dark road, lane lines, blue planned path, car from behind.
+function FsdIllustration() {
+  return (
+    <svg viewBox="0 0 400 180" preserveAspectRatio="xMidYMid slice" className="w-full h-full" aria-hidden>
+      <defs>
+        <linearGradient id="fsd-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#0b1220" />
+          <stop offset="100%" stopColor="#141a26" />
+        </linearGradient>
+        <linearGradient id="fsd-path" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.75" />
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+        </linearGradient>
+        <radialGradient id="fsd-glow" cx="50%" cy="100%" r="60%">
+          <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25" />
+          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <rect width="400" height="180" fill="url(#fsd-sky)" />
+      <rect width="400" height="180" fill="url(#fsd-glow)" />
+      {/* Road surface */}
+      <polygon points="0,180 400,180 230,40 170,40" fill="#1b2130" />
+      {/* Road edges */}
+      <line x1="170" y1="40" x2="10" y2="180" stroke="#cbd5e1" strokeOpacity="0.5" strokeWidth="2" />
+      <line x1="230" y1="40" x2="390" y2="180" stroke="#cbd5e1" strokeOpacity="0.5" strokeWidth="2" />
+      {/* Lane dividers */}
+      <line x1="190" y1="40" x2="135" y2="180" stroke="#e2e8f0" strokeOpacity="0.55" strokeWidth="2" strokeDasharray="10 12" />
+      <line x1="210" y1="40" x2="265" y2="180" stroke="#e2e8f0" strokeOpacity="0.55" strokeWidth="2" strokeDasharray="10 12" />
+      {/* Planned path */}
+      <polygon points="168,180 232,180 204,40 196,40" fill="url(#fsd-path)" />
+      {/* Other vehicles ahead */}
+      <rect x="150" y="70" width="18" height="11" rx="3" fill="#64748b" fillOpacity="0.8" />
+      <rect x="216" y="58" width="13" height="8" rx="2" fill="#64748b" fillOpacity="0.6" />
+      {/* Ego car from behind */}
+      <g transform="translate(200 150)">
+        <path d="M-38 18 L-34 -2 Q-30 -14 -18 -16 L18 -16 Q30 -14 34 -2 L38 18 Z" fill="#e5e7eb" />
+        <path d="M-24 -4 Q-22 -12 -14 -13 L14 -13 Q22 -12 24 -4 Z" fill="#1f2937" />
+        <rect x="-34" y="4" width="14" height="4" rx="2" fill="#ef4444" />
+        <rect x="20" y="4" width="14" height="4" rx="2" fill="#ef4444" />
+      </g>
+    </svg>
+  );
+}
+
+function FeaturedCard({ featured }: { featured: NonNullable<typeof featuredLink> }) {
+  const [imgError, setImgError] = useState(!featured.image);
+
+  return (
+    <div style={{ animation: "fade-up 0.5s ease 0.5s both" }}>
+      <a
+        href={featured.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="featured-card block w-full rounded-2xl overflow-hidden"
+        style={{
+          background: "#1c1c24",
+          border: "1px solid rgba(59,130,246,0.35)",
+          boxShadow: "0 0 24px rgba(59,130,246,0.15), 0 8px 32px rgba(0,0,0,0.3)",
+        }}
+      >
+        <div className="relative w-full aspect-[20/9] overflow-hidden">
+          {imgError ? (
+            <FsdIllustration />
+          ) : (
+            <Image
+              src={featured.image!}
+              alt=""
+              fill
+              sizes="450px"
+              className="object-cover"
+              onError={() => setImgError(true)}
+            />
+          )}
+          <span
+            className="absolute top-3 left-3 text-[10px] font-bold tracking-[0.2em] uppercase px-2 py-1 rounded-md text-white"
+            style={{ background: "rgba(59,130,246,0.85)" }}
+          >
+            Free month
+          </span>
+        </div>
+        <div className="flex items-center gap-3 px-5 py-4">
+          <img src={featured.favicon} alt="" width={24} height={24} className="w-6 h-6 rounded-sm object-contain flex-shrink-0" />
+          <div className="flex flex-col">
+            <span className="text-[15px] font-semibold tracking-wide text-[#f0f0f0]">{featured.label}</span>
+            {featured.sub && (
+              <span className="text-[11px] text-[#3b82f6] mt-0.5 leading-tight">{featured.sub}</span>
+            )}
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+}
+
 /* ─── Profile photo with initials fallback ──────────────────────────────── */
 
 function ProfilePhoto() {
@@ -292,6 +388,7 @@ export default function Page() {
 
         {/* Link stack */}
         <div className="mt-8 flex flex-col gap-3 w-full">
+          {featuredLink && <FeaturedCard featured={featuredLink} />}
           {links.map((link, i) => {
             const prevSection = i > 0 ? links[i - 1].section : null;
             const showSection = link.section && link.section !== prevSection;
@@ -308,7 +405,7 @@ export default function Page() {
                   label={link.label}
                   sub={link.sub}
                   invertFavicon={link.invertFavicon}
-                  delay={0.5 + i * 0.1}
+                  delay={(featuredLink ? 0.6 : 0.5) + i * 0.1}
                 />
               </div>
             );
